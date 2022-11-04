@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 let AddPatient = null;
@@ -12,6 +12,7 @@ export default AddPatient = ({ navigation }) => {
   const [checked, setChecked] = React.useState('Male');
 
   const getDataUsingPost = () => {
+    console.log("post method")
 
     //POST json
     var dataToSend = {
@@ -32,7 +33,7 @@ export default AddPatient = ({ navigation }) => {
     }
     formBody = formBody.join('&');
     //POST request
-    fetch('http://10.0.2.2:3000/patients', {
+    fetch('http://192.168.2.23:8000/patients', {
       method: 'POST', //Request Type
       body: formBody, //post body
       headers: {
@@ -54,82 +55,126 @@ export default AddPatient = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.form}>
       <StatusBar style="auto" />
 
-      <Text>Name:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}
-        value={emaildId}
-        placeholder="Enter patient name"
-      />
+      <Text style={styles.text}>Name:</Text>
+      <TextInput 
+        style={styles.textinput} 
+        TexonChanget={onChangeText1}
+        value={emaildId} 
+        placeholder="Enter patient name">
+      </TextInput>
 
-      <Text>Address:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}
-        value={emaildId}
-        placeholder="Enter patient's address"
-      />
+      <Text style={styles.text}>Address:</Text>
+      <TextInput 
+        style={styles.textinput} 
+        TexonChanget={onChangeText1}
+        value={emaildId} 
+        placeholder="Enter patient's address">
+      </TextInput>
 
-      <Text>Contact No:</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}
-        value={emaildId}
-        placeholder="Enter patient's contact no"
-      />
+      <Text style={styles.text}>Contact No:</Text>
+      <TextInput 
+        style={styles.textinput} 
+        TexonChanget={onChangeText1}
+        value={emaildId} 
+        placeholder="Enter patient's contact no">
+      </TextInput>
 
-      <Text>Email</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}
-        value={emaildId}
-        placeholder="Enter patient's email address"
-      />
+      <Text style={styles.text}>Email:</Text>
+      <TextInput 
+        style={styles.textinput} 
+        TexonChanget={onChangeText1}
+        value={emaildId} 
+        placeholder="Enter patient's email address">
+      </TextInput>
 
-      <Text>Age</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeText1}
-        value={emaildId}
-        placeholder="Enter patient's age"
-      />
+      <Text style={styles.text}>Age:</Text>
+      <TextInput 
+        style={styles.textinput} 
+        TexonChanget={onChangeText1}
+        value={emaildId} 
+        placeholder="Enter patient's age">
+      </TextInput>
 
-      <Text>Gender</Text>
-      <RadioButton
-        value="Male"
-        status={checked === 'Male' ? 'checked' : 'unchecked'}
-        onPress={() => setChecked('Male')}
-      />
-      <RadioButton
-        value="Female"
-        status={checked === 'Female' ? 'checked' : 'unchecked'}
-        onPress={() => setChecked('Female')}
-      />
+      <Text style={styles.text}>Gender:</Text>
+      
+      <View style={styles.container}>
+        <RadioButton
+          style={styles.radiobtn}
+          value="Male"
+          status={checked === 'Male' ? 'checked' : 'unchecked'}
+          onPress={() => setChecked('Male')}
+        />
+        <Text style={styles.radiobtntext}>Male</Text>
+        <RadioButton
+          style={styles.radiobtn}
+          value="Female"
+          status={checked === 'Female' ? 'checked' : 'unchecked'}
+          onPress={() => setChecked('Female')}
+        />
+        <Text style={styles.radiobtntext}>Female</Text>
+      </View>
 
-      <Button
-        title="Login"
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddTestDetails")}>
+        <Text style={styles.btntext}>Save</Text>
+      </TouchableOpacity>
+
+      {/* <Button
+        title="Save"
         color={"#d68227"}
-        onPress={() => getDataUsingPost /*navigation.navigate("AddTestDetails")*/}
-      />
+        onPress={() => getDataUsingPost() navigation.navigate("AddTestDetails")}
+      /> */}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  form: {
+    alignSelf: 'stretch',
+    paddingTop:10
   },
-  input: {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    //justifyContent:"space-between",
+    flexDirection: 'row',
+    marginLeft:10,
+  },
+  text: {
+    marginLeft: 20,
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  textinput: {
+    alignSelf: 'stretch',
     height: 40,
-    width: 240,
-    margin: 12,
-    borderWidth: 1,
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    paddingLeft: 10,
+    fontSize: 18,
+    backgroundColor: '#E5E4E2',
+    borderColor: 'lightgrey',
+    borderWidth: 1
+  },
+  radiobtntext: {
+    fontSize: 20
+  },
+  button: {
+    alignSelf: 'center',
+    alignItems: 'center',
     padding: 10,
+    width: 120,
+    backgroundColor: '#d68227',
+    marginTop: 30,
+    borderRadius: 22
+  },
+  btntext: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });

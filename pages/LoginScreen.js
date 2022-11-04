@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
 
@@ -12,7 +12,7 @@ const LoginScreen = ({ navigation }) => {
     console.log(data);
     
     useEffect(() => {
-        fetch('http:192.168.2.69:5000/patients')
+        fetch('http://192.168.2.23:8000/patients')
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => console.error(error))
@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <Text>Login</Text>
+            <Text style={styles.text}>Login</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText1}
@@ -36,11 +36,9 @@ const LoginScreen = ({ navigation }) => {
                 placeholder="Enter Your Password"
                 keyboardType="Password"
             />
-            <Button
-                title="Login"
-                color={"#d68227"}
-                onPress={() => navigation.navigate("AddPatient")}
-            />
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddPatient")}>
+                <Text style={styles.btntext}>Login</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -57,6 +55,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    text: {
+        marginBottom:10,
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
     input: {
         height: 40,
         width: 240,
@@ -64,4 +67,18 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
+    button: {
+        alignSelf: 'center',
+        alignItems: 'center',
+        padding: 5,
+        width: 100,
+        backgroundColor: '#d68227',
+        marginTop: 20,
+        borderRadius: 22
+      },
+      btntext: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
 });

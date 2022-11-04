@@ -84,7 +84,8 @@ export default AddTestDetails;
 
 const styles = StyleSheet.create({
   recordform: {
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    paddingTop:10
   },
   container: {
     display: "flex",

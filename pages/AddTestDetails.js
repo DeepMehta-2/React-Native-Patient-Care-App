@@ -85,7 +85,7 @@ export default AddTestDetails;
 const styles = StyleSheet.create({
   recordform: {
     alignSelf: 'stretch',
-    paddingTop:10
+    paddingTop: 10
   },
   container: {
     display: "flex",
@@ -128,10 +128,10 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: 8,
     width: 120,
     backgroundColor: '#d68227',
-    marginTop: 30,
+    marginTop: 15,
     borderRadius: 22
   },
   btntext: {

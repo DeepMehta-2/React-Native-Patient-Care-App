@@ -59,47 +59,55 @@ export default AddPatient = ({ navigation }) => {
       <StatusBar style="auto" />
 
       <Text style={styles.text}>Name:</Text>
-      <TextInput 
-        style={styles.textinput} 
+      <TextInput
+        style={styles.textinput}
         TexonChanget={onChangeText1}
-        value={emaildId} 
+        value={emaildId}
         placeholder="Enter patient name">
       </TextInput>
 
       <Text style={styles.text}>Address:</Text>
-      <TextInput 
-        style={styles.textinput} 
+      <TextInput
+        style={styles.textinput}
         TexonChanget={onChangeText1}
-        value={emaildId} 
+        value={emaildId}
         placeholder="Enter patient's address">
       </TextInput>
 
       <Text style={styles.text}>Contact No:</Text>
-      <TextInput 
-        style={styles.textinput} 
+      <TextInput
+        style={styles.textinput}
         TexonChanget={onChangeText1}
-        value={emaildId} 
+        value={emaildId}
         placeholder="Enter patient's contact no">
       </TextInput>
 
-      <Text style={styles.text}>Email:</Text>
-      <TextInput 
-        style={styles.textinput} 
+      <Text style={styles.text}>Department:</Text>
+      <TextInput
+        style={styles.textinput}
         TexonChanget={onChangeText1}
-        value={emaildId} 
-        placeholder="Enter patient's email address">
+        value={emaildId}
+        placeholder="Enter department">
+      </TextInput>
+
+      <Text style={styles.text}>Doctor:</Text>
+      <TextInput
+        style={styles.textinput}
+        TexonChanget={onChangeText1}
+        value={emaildId}
+        placeholder="Enter doctor name">
       </TextInput>
 
       <Text style={styles.text}>Age:</Text>
-      <TextInput 
-        style={styles.textinput} 
+      <TextInput
+        style={styles.textinput}
         TexonChanget={onChangeText1}
-        value={emaildId} 
+        value={emaildId}
         placeholder="Enter patient's age">
       </TextInput>
 
       <Text style={styles.text}>Gender:</Text>
-      
+
       <View style={styles.container}>
         <RadioButton
           style={styles.radiobtn}
@@ -117,7 +125,7 @@ export default AddPatient = ({ navigation }) => {
         <Text style={styles.radiobtntext}>Female</Text>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddTestDetails")}>
+      <TouchableOpacity style={styles.button} onPress={() => { getDataUsingPost(), navigation.goBack() }}>
         <Text style={styles.btntext}>Save</Text>
       </TouchableOpacity>
 
@@ -133,14 +141,14 @@ export default AddPatient = ({ navigation }) => {
 const styles = StyleSheet.create({
   form: {
     alignSelf: 'stretch',
-    paddingTop:10
+    paddingTop: 10
   },
   container: {
     display: "flex",
     alignItems: "center",
     //justifyContent:"space-between",
     flexDirection: 'row',
-    marginLeft:10,
+    marginLeft: 10,
   },
   text: {
     marginLeft: 20,
@@ -149,7 +157,7 @@ const styles = StyleSheet.create({
   },
   textinput: {
     alignSelf: 'stretch',
-    height: 40,
+    height: 35,
     marginLeft: 20,
     marginRight: 20,
     marginTop: 10,
@@ -166,10 +174,10 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: 8,
     width: 120,
     backgroundColor: '#d68227',
-    marginTop: 30,
+    marginTop: 15,
     borderRadius: 22
   },
   btntext: {

@@ -10,7 +10,7 @@ const LoginScreen = ({ navigation }) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     console.log(data);
-    
+
     useEffect(() => {
         fetch('http://192.168.2.23:8000/patients')
             .then((response) => response.json())
@@ -36,7 +36,7 @@ const LoginScreen = ({ navigation }) => {
                 placeholder="Enter Your Password"
                 keyboardType="Password"
             />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AddPatient")}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ViewPatient")}>
                 <Text style={styles.btntext}>Login</Text>
             </TouchableOpacity>
         </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     text: {
-        marginBottom:10,
+        marginBottom: 10,
         fontSize: 25,
         fontWeight: 'bold'
     },
@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#d68227',
         marginTop: 20,
         borderRadius: 22
-      },
-      btntext: {
+    },
+    btntext: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
-      },
+    },
 });
